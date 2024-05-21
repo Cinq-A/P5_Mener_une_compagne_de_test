@@ -1,0 +1,1783 @@
+<html
+        xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>Jira</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\,";
+    mso-displayed-thousand-separator:" ";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#205081" height="30">
+        <td colspan="70">
+            <img src="https://alphatestoc.atlassian.net/images/icon-jira-software-logo.png" width="57" height="30" border="0" alt="Jira">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="70">
+            <a href="https://alphatestoc.atlassian.net/issues/?jql=created+%3E%3D+-30d+order+by+created+DESC">Jira</a>
+        </td>
+    </tr>
+    <tr>
+                <td colspan="70">
+            Affichage de <strong>11</strong> ticket(s) à <strong>22/nov./23 11:37 AM</strong>.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                                        <table id="issuetable" class="aui " border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                                                        Projet
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                                                        Clé
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                                                        Résumé
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                                                        Type de ticket
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                                                        État
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                                                        Priorité
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                                                        Résolution
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                                                        Responsable
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                                                        Rapporteur
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                                                        Créateur
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                                                        Création
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                                                        Dernier affichage
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                                                        Mise à jour
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                                                        Résolu
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                                                        Versions affectées
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                                                        Versions corrigées
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                                                        Composants
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                                                        Date d&#39;échéance
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                                                        Votes
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                                                        Observateurs
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                                                        Images
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                                                        Estimation originale
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                                                        Estimation restante
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                                                        Temps consacré
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                                                        Ratio du travail réel comparé à l&#39;estimation
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                                                        Sous-tâches
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                                                        Tickets liés
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                                                        Environnement
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                                                        Description
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                                                        Niveau de sécurité
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                                                        Progression
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                                                        Σ Progrès
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                                                        Σ Temps consacré
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                                                        Σ Estimation restante
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                                                        Σ Estimation originale
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                                                        Étiquettes
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statuscategorychangedate" data-id="statuscategorychangedate">
+                                                        Catégorie d&#39;état modifiée
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statusCategory" data-id="statusCategory">
+                                                        Catégorie d&#39;état
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-parent" data-id="parent">
+                                                        Parent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10009" data-id="customfield_10009">
+                                                        Actual end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10008" data-id="customfield_10008">
+                                                        Actual start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10003" data-id="customfield_10003">
+                                                        Approvers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10007" data-id="customfield_10007">
+                                                        Change reason
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10006" data-id="customfield_10006">
+                                                        Change risk
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10005" data-id="customfield_10005">
+                                                        Change type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10026" data-id="customfield_10026">
+                                                        Compass
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10032" data-id="customfield_10032">
+                                                        Criticité
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10013" data-id="customfield_10013">
+                                                        Epic Color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10014" data-id="customfield_10014">
+                                                        Epic Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10011" data-id="customfield_10011">
+                                                        Epic Name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10012" data-id="customfield_10012">
+                                                        Epic Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10021" data-id="customfield_10021">
+                                                        Flagged
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10004" data-id="customfield_10004">
+                                                        Impact
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10017" data-id="customfield_10017">
+                                                        Issue color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10027" data-id="customfield_10027">
+                                                        Formulaires verrouillés
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10028" data-id="customfield_10028">
+                                                        Formulaires ouverts
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10002" data-id="customfield_10002">
+                                                        Organizations
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10018" data-id="customfield_10018">
+                                                        Parent Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10019" data-id="customfield_10019">
+                                                        Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10010" data-id="customfield_10010">
+                                                        Request Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10020" data-id="customfield_10020">
+                                                        Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10015" data-id="customfield_10015">
+                                                        Start date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10016" data-id="customfield_10016">
+                                                        Story point estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10029" data-id="customfield_10029">
+                                                        Formulaires envoyés
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10023" data-id="customfield_10023">
+                                                        Target end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10022" data-id="customfield_10022">
+                                                        Target start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10001" data-id="customfield_10001">
+                                                        Team
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10030" data-id="customfield_10030">
+                                                        Nombre total de formulaires
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10024" data-id="customfield_10024">
+                                                        [CHART] Date of First Response
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                                                        development
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow10012" rel="10012" data-issuekey="PDTL-13" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-13" href="https://alphatestoc.atlassian.net/browse/PDTL-13">PDTL-13</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-011 : API (POST/inscription) renvoi code 400 Bad Request
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 7:47 PM </td>
+                                            <td class="lastViewed"> 22/nov./23 11:12 AM </td>
+                                            <td class="updated"> 21/nov./23 11:04 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://alphatestoc.atlassian.net/secure/attachment/10007/API+POST-inscription+renvoi+code+400+Bad+Request.png">
+            API POST-inscription renvoi code 400 Bad Request.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Dans un navigateur, accédez à l’url suivante : [http://localhost:8080/api-docs|http://localhost:8080/api-docs]|la page &quot;724 events API&quot; s&#39;affiche est constituée de:<br/>
+* Events<br/>
+* Contact<br/>
+* Inscription<br/>
+* Models|<br/>
+|Cliquer sur la ligne : POST/inscription/|Les paramètres sont affichés et contient :<br/>
+* Bouton &quot;Try it out&quot; <br/>
+* Inscription information: Objet &amp; Edit Value | Model :<br/>
+{<br/>
+  &quot;eventId&quot;: &quot;0efrg1400351423rfd&quot;,<br/>
+  &quot;name&quot;: &quot;John&quot;,<br/>
+  &quot;surname&quot;: &quot;Doe&quot;,<br/>
+  &quot;email&quot;: &quot;johndoe@test.tld&quot;,<br/>
+  &quot;date&quot;: &quot;2022-04-29T20:28:45.744Z&quot;<br/>
+}<br/>
+Responses : 201: Created , 400 : Bad Request  et 500 : Internal Server Error|<br/>
+|cliquer sur le bouton &quot;Try it out&quot;|Le bouton &quot;Execute&quot; est affiché<br/>
+l&#39;Objet &amp; Edit Value | Model se déverouille et devient modifiable|<br/>
+|remplacer  les information trouvées par les suivantes récupérée de la liste des evenement (GET/events/):<br/>
+{<br/>
+  &quot;eventId&quot;: &quot;655cdb9d77c9968d28b2231d&quot;,<br/>
+  &quot;name&quot;: &quot;John&quot;,<br/>
+  &quot;surname&quot;: &quot;Doe&quot;,<br/>
+  &quot;email&quot;: &quot;johndoe@test.tld&quot;,<br/>
+  &quot;date&quot;: &quot;2027-06-10T20:28:45.744Z&quot;<br/>
+}<br/>
+puis cliquer sur le bouton &quot;Execute&quot;|une message de confirmation d&#39;inscription s&#39;affiche|<br/>
+<br/>
+|{color:#ff5630}Server response rennvoi le code  400 Bad Request et le message suivant est affiché :{color}<br/>
+{color:#ff5630}{{color}<br/>
+{color:#ff5630}  &quot;error&quot;: {{color}<br/>
+{color:#ff5630}    &quot;errors&quot;: {{color}<br/>
+{color:#ff5630}      &quot;surname&quot;: {{color}<br/>
+{color:#ff5630}        &quot;stringValue&quot;: &quot;\&quot;Doe\&quot;&quot;,{color}<br/>
+{color:#ff5630}        &quot;valueType&quot;: &quot;string&quot;,{color}<br/>
+{color:#ff5630}        &quot;kind&quot;: &quot;Number&quot;,{color}<br/>
+{color:#ff5630}        &quot;value&quot;: &quot;Doe&quot;,{color}<br/>
+{color:#ff5630}        &quot;path&quot;: &quot;surname&quot;,{color}<br/>
+{color:#ff5630}        &quot;reason&quot;: {{color}<br/>
+{color:#ff5630}          &quot;generatedMessage&quot;: true,{color}<br/>
+{color:#ff5630}          &quot;code&quot;: &quot;ERR_ASSERTION&quot;,{color}<br/>
+{color:#ff5630}          &quot;actual&quot;: false,{color}<br/>
+{color:#ff5630}          &quot;expected&quot;: true,{color}<br/>
+{color:#ff5630}          &quot;operator&quot;: &quot;==&quot;{color}<br/>
+{color:#ff5630}        },{color}<br/>
+{color:#ff5630}        &quot;name&quot;: &quot;CastError&quot;,{color}<br/>
+{color:#ff5630}        &quot;message&quot;: &quot;Cast to Number failed for value \&quot;Doe\&quot; (type string) at path \&quot;surname\&quot;&quot;{color}<br/>
+{color:#ff5630}      }{color}<br/>
+{color:#ff5630}    },{color}<br/>
+{color:#ff5630}    &quot;_message&quot;: &quot;Inscription validation failed&quot;,{color}<br/>
+{color:#ff5630}    &quot;name&quot;: &quot;ValidationError&quot;,{color}<br/>
+{color:#ff5630}    &quot;message&quot;: &quot;Inscription validation failed: surname: Cast to Number failed for value \&quot;Doe\&quot; (type string) at path \&quot;surname\&quot;&quot;{color}<br/>
+{color:#ff5630}  }{color}<br/>
+{color:#ff5630}}{color}|
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 7:47 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Critique
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001z:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10011" rel="10011" data-issuekey="PDTL-12" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-12" href="https://alphatestoc.atlassian.net/browse/PDTL-12">PDTL-12</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-010 : API (POST/contact) renvoi code 201 Created avec des données non conformes
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 7:44 PM </td>
+                                            <td class="lastViewed"> 21/nov./23 11:04 PM </td>
+                                            <td class="updated"> 21/nov./23 11:06 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://alphatestoc.atlassian.net/secure/attachment/10008/API+POST-contact+renvoi+code+201+Created+avec+des+donn%C3%A9es+non+conformes.png">
+            API POST-contact renvoi code 201 Created avec des données non conformes.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Dans un navigateur, accédez à l’url suivante : [http://localhost:8080/api-docs|http://localhost:8080/api-docs]|la page &quot;724 events API&quot; s&#39;affiche est constituée de:<br/>
+* Events<br/>
+* Contact<br/>
+* Inscription<br/>
+* Models|<br/>
+|Cliquer sur la ligne : POST/contact/|Les paramètres sont affichés et contient :<br/>
+* Bouton &quot;Try it out&quot; <br/>
+* Contact information: Objet &amp; Edit Value | Model :<br/>
+{<br/>
+  &quot;name&quot;: &quot;Doe&quot;,<br/>
+  &quot;surname&quot;: &quot;Jhon&quot;,<br/>
+  &quot;contactType&quot;: &quot;Personnel&quot;,<br/>
+  &quot;email&quot;: &quot;johndoe@test.tld&quot;,<br/>
+  &quot;message&quot;: &quot;Exemple de message&quot;<br/>
+}<br/>
+Responses : 200 pour OK  et  400 pour Bad Request|<br/>
+|cliquer sur le bouton &quot;Try it out&quot;|Le bouton &quot;Execute&quot; est affiché<br/>
+l&#39;Objet &amp; Edit Value | Model se déverouille et devient modifiable|<br/>
+|remplacer  &quot;Doé&quot; de &quot;name&quot; par des chiffres ou un espace<br/>
+remplacer  &quot;Jhon&quot; de &quot;surname&quot; par des chiffresou un espace<br/>
+remplacer &quot;Personnel&quot; de &quot;contactType&quot; par de chiffres ou un espace<br/>
+remplacer &quot;johndoe@test.tld&quot; de &quot;email&quot; par des chiffres ou un espace (sans respecter le format Email)<br/>
+remplacer &quot;Exemple de messag&quot; du &quot;message&quot; par un espace<br/>
+puis cliquer sur le bouton &quot;Execute&quot;|une message d&#39;erreur s&#39;affiche pour le non respect de types de données de chaque champs,<br/>
+<br/>
+{color:#ff5630}Server response renvoi le code 201 Created et un{color}<br/>
+{color:#ff5630}{{color}<br/>
+{color:#ff5630}  &quot;message&quot;: &quot;Merci de nous avoir contacté !&quot;{color}<br/>
+{color:#ff5630}}{color}<br/>
+{color:#ff5630}est affiché{color}|
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 7:44 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Majeure
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001r:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10010" rel="10010" data-issuekey="PDTL-11" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-11" href="https://alphatestoc.atlassian.net/browse/PDTL-11">PDTL-11</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-009 : API (GET/events/last) renvoi l&#39;erreur 500 Internal Server Error
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 7:39 PM </td>
+                                            <td class="lastViewed"> 21/nov./23 11:06 PM </td>
+                                            <td class="updated"> 21/nov./23 11:08 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://alphatestoc.atlassian.net/secure/attachment/10009/API+GET-events-last+renvoi+l%27erreur+500+Internal+Server+Error.png">
+            API GET-events-last renvoi l'erreur 500 Internal Server Error.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Dans un navigateur, accédez à l’url suivante : [http://localhost:8080/api-docs|http://localhost:8080/api-docs]|la page &quot;724 events API&quot; s&#39;affiche est constituée de:<br/>
+* Events<br/>
+* Contact<br/>
+* Inscription<br/>
+* Models|<br/>
+|Cliquer sur la ligne : GET/events/last|les paramètres sont affichés<br/>
+le bouton &quot;Try it out&quot; est affiché|<br/>
+|Cliquer sur le bouton &quot;Try it out&quot;|le bouton &quot;Execute&quot; est affiché|<br/>
+|Cliquer sur le bouton &quot;Execute&quot;|Les données du dernier évènement s&#39;affiche<br/>
+{color:#ff5630}Server response renvoi le code  500 	{color}<br/>
+{color:#ff5630}Error: Internal Server Error et le message vide est affiché comme suit:  { }{color}|
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 7:39 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Critique
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001j:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10009" rel="10009" data-issuekey="PDTL-10" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-10" href="https://alphatestoc.atlassian.net/browse/PDTL-10">PDTL-10</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-008 : API (GET/events) se bloquent si les données saisies sont erronés.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 5:22 PM </td>
+                                            <td class="lastViewed"> 22/nov./23 11:13 AM </td>
+                                            <td class="updated"> 21/nov./23 11:28 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://alphatestoc.atlassian.net/secure/attachment/10011/01+API+GET+events+id+correct+resultat+correct.png">
+            01 API GET events id correct resultat correct.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Dans un navigateur, accédez à l’url suivante : [http://localhost:8080/api-docs|http://localhost:8080/api-docs]|la page &quot;724 events API&quot; s&#39;affiche est constituée de:<br/>
+* Events<br/>
+* Contact<br/>
+* Inscription<br/>
+* Models|<br/>
+|Cliquer sur la ligne : GET/events/|les paramètres sont affichés|<br/>
+|Cliquer sur le bouton &quot;Try it out&quot;|le bouton &quot;Execute&quot; est affiché|<br/>
+|Cliquer sur le bouton &quot;Execute&quot;|La reponse est affichée et composé de:<br/>
+* Curl<br/>
+* Request URL<br/>
+* Server response:   le code 200 &amp; detail qui contient (Response body et response headers)<br/>
+* Responses : 200 pour OK  et  400 pour Bad Request|<br/>
+|Dans la partie &quot;Response body&quot; copier la valeur alphanumérique de &quot;_id&quot; qui contient 24 caractères (&quot;_id&quot;: &quot;655a3350515b783f0bd4f402&quot;)|la valeur est présente|<br/>
+|Dans la liste des Events, cliquer sur la ligne: GET/events/{id}|les paramètres sont affichés avec un bouton        &quot;Try it out&quot;  et un champs de saisi de l&#39;ID qui est verrouillé|<br/>
+|Cliquer sur le bouton &quot;Try it out&quot;|le champs de saisi ID est déverouillé et le bouton &quot;Execute&quot; est affiché|<br/>
+|Coller dans le champs &quot;ID&quot; la valeur copié depuis &quot;Respose body&quot; (voire l&#39;etape n°05) puis cliquer sur le bouton &quot;Execute&quot;|La reponse est affichée et composé de:<br/>
+* Curl<br/>
+* Request URL<br/>
+* Server response:   le code 200 &amp; detail qui contient (Response body et response headers)<br/>
+* Responses : 200 pour OK  et  400 pour Bad Request  <br/>
+-La rubrique &quot;Response body&quot; retourne uniquement l&#39;enregistrement suivant:<br/>
+{<br/>
+  &quot;_id&quot;: &quot;655a3350515b783f0bd4f402&quot;,<br/>
+  &quot;title&quot;: &quot;User&amp;product MixUsers&quot;,<br/>
+  &quot;date&quot;: &quot;2022-04-29T20:28:45.744Z&quot;,<br/>
+  &quot;type&quot;: &quot;conférence&quot;,<br/>
+  &quot;cover&quot;: &quot;[http://localhost:8080/images/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg|http://localhost:8080/images/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg]&quot;,<br/>
+  &quot;description&quot;: &quot;Présentation des nouveaux usages UX.&quot;,<br/>
+  &quot;nb_guest&quot;: 900,<br/>
+  &quot;periode&quot;: &quot;14-15-16&quot;,<br/>
+  &quot;prestations&quot;: [<br/>
+    &quot;1 espace d’exposition&quot;,<br/>
+    &quot;1 scéne principale&quot;,<br/>
+    &quot;1 espace de restaurations&quot;<br/>
+  ],<br/>
+  &quot;location&quot;: &quot;[https://www.google.com/maps/embed?pb=\!1m18\!1m12\!1m3\!1d7641.686438513205\!2d2.238008572044138\!3d48.890337143184446\!2m3\!1f0\!2f0\!3f0\!3m2\!1i1024\!2i768\!4f13.1\!3m3\!1m2\!1s0x47e66502f6012a89%3A0x31d9bac0d2b5f5\!2zVUdDIENpbsOpIENpdMOpIExhIETDqWZlbnNl\!5e0\!3m2\!1sfr\!2sec\!4v1675261446781\!5m2\!1sfr\!2sec|https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7641.686438513205!2d2.238008572044138!3d48.890337143184446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66502f6012a89%3A0x31d9bac0d2b5f5!2zVUdDIENpbsOpIENpdMOpIExhIETDqWZlbnNl!5e0!3m2!1sfr!2sec!4v1675261446781!5m2!1sfr!2sec]&quot;,<br/>
+  &quot;__v&quot;: 0<br/>
+}|<br/>
+|Dans le champs &quot;ID&quot; saisir un ID érroné puis cliquer sur le bouton &quot;Execute&quot;|La reponse est affichée et composé de:<br/>
+* Curl<br/>
+* Request URL<br/>
+* Server response:  avec un message d&#39;erreur qui contient:<br/>
+       Undocumented<br/>
+                                 Failed to fetch.<br/>
+                                 Possible Reasons:<br/>
+* CORS<br/>
+* Network Failure<br/>
+* URL scheme must be &quot;http&quot; or &quot;https&quot; for CORS request.<br/>
+* Responses : 200 pour OK  et  400 pour Bad Request|<br/>
+|Recoller dans le champs &quot;ID&quot; la valeur copié depuis &quot;Respose body&quot; (voire l&#39;etape n°05) puis cliquer sur le bouton &quot;Execute&quot;|La reponse est affichée et composé de:<br/>
+* Curl<br/>
+* Request URL<br/>
+* Server response:   le code 200 &amp; detail qui contient (Response body et response headers)<br/>
+* Responses : 200 pour OK  et  400 pour Bad Request  <br/>
+-La rubrique &quot;Response body&quot; retourne uniquement l&#39;enregistrement suivant:<br/>
+{<br/>
+  &quot;_id&quot;: &quot;655a3350515b783f0bd4f402&quot;,<br/>
+  &quot;title&quot;: &quot;User&amp;product MixUsers&quot;,<br/>
+  &quot;date&quot;: &quot;2022-04-29T20:28:45.744Z&quot;,<br/>
+  &quot;type&quot;: &quot;conférence&quot;,<br/>
+  &quot;cover&quot;: &quot;[http://localhost:8080/images/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg|http://localhost:8080/images/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg]&quot;,<br/>
+  &quot;description&quot;: &quot;Présentation des nouveaux usages UX.&quot;,<br/>
+  &quot;nb_guest&quot;: 900,<br/>
+  &quot;periode&quot;: &quot;14-15-16&quot;,<br/>
+  &quot;prestations&quot;: [<br/>
+    &quot;1 espace d’exposition&quot;,<br/>
+    &quot;1 scéne principale&quot;,<br/>
+    &quot;1 espace de restaurations&quot;<br/>
+  ],<br/>
+  &quot;location&quot;: &quot;[https://www.google.com/maps/embed?pb=\!1m18\!1m12\!1m3\!1d7641.686438513205\!2d2.238008572044138\!3d48.890337143184446\!2m3\!1f0\!2f0\!3f0\!3m2\!1i1024\!2i768\!4f13.1\!3m3\!1m2\!1s0x47e66502f6012a89%3A0x31d9bac0d2b5f5\!2zVUdDIENpbsOpIENpdMOpIExhIETDqWZlbnNl\!5e0\!3m2\!1sfr\!2sec\!4v1675261446781\!5m2\!1sfr\!2sec|https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7641.686438513205!2d2.238008572044138!3d48.890337143184446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66502f6012a89%3A0x31d9bac0d2b5f5!2zVUdDIENpbsOpIENpdMOpIExhIETDqWZlbnNl!5e0!3m2!1sfr!2sec!4v1675261446781!5m2!1sfr!2sec]&quot;,<br/>
+  &quot;__v&quot;: 0<br/>
+}<br/>
+<br/>
+{color:#ff5630}+*La réponse n’est pas affichée mais ce message d’erreur ci dessous:*+{color}<br/>
+La reponse est affichée et composé de:<br/>
+* Curl<br/>
+* Request URL<br/>
+* Server response:  avec un message d&#39;erreur qui contient:<br/>
+* Responses : 200 pour OK  et  400 pour Bad Request  <br/>
+et aucune requette n&#39;est fonctionnelle.<br/>
+{color:#ff5630}*Noter bien que pour chaque erreur de saisie, cela nécessite le redémarrage du containers pour débloquer swagger,*{color}|<br/>
+<br/>
+*Vous trouvez ci-jointes les 3 captures qui illustrent:*<br/>
+<br/>
+01: Id correcte → résultat correct<br/>
+<br/>
+02: Id incorrect → résultat Incorrect <br/>
+<br/>
+03: Id correct → résultat Incorrect (après il faut redémarrer le server) 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 5:22 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Critique
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001b:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10008" rel="10008" data-issuekey="PDTL-9" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-9" href="https://alphatestoc.atlassian.net/browse/PDTL-9">PDTL-9</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-007 : Exploratoire - Le menu de la page &quot;Nos réalisations&quot; ne fonctionne pas
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 5:10 PM </td>
+                                            <td class="lastViewed"> 21/nov./23 10:58 PM </td>
+                                            <td class="updated"> 21/nov./23 5:10 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Accéder à la page d&#39;accueil du site|La page s&#39;affiche|<br/>
+|Cliquer sur l&#39;item &quot;Nos réalisations&quot; du menu ou scroller jusqu&#39;à cette section|Cette section présente les réalisations de l&#39;agence|<br/>
+|cliquer sur une vignette|Une nouvelle page s&#39;ouvre|<br/>
+|Cliquer sur l&#39;item &quot;Nos services&quot; du menu|la section &quot;Nos service&quot; s&#39;affiche<br/>
+{color:#ff5630}la section &quot;Nos service&quot; ne s&#39;affiche pas{color}|<br/>
+|Cliquer sur l&#39;item &quot;Nos réalisations&quot; du menu|la section &quot;Nos réalisations&quot; s&#39;affiche<br/>
+{color:#ff5630}la section &quot;Nos réalisations&quot; ne s&#39;affiche pas{color}|<br/>
+|Cliquer sur l&#39;item &quot;Notre équipe&quot; du menu|la section &quot;Notre équipe&quot; s&#39;affiche<br/>
+{color:#ff5630}la section &quot;Notre équipe&quot; ne s&#39;affiche pas{color}|<br/>
+|Cliquer sur l&#39;item &quot;Contact&quot; du menu|la section &quot;Contact&quot; s&#39;affiche<br/>
+{color:#ff5630}la section &quot;Contact&quot; s&#39;affiche{color}|
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 5:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Majeure
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00013:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10007" rel="10007" data-issuekey="PDTL-8" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-8" href="https://alphatestoc.atlassian.net/browse/PDTL-8">PDTL-8</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-006 : Exploratoire - Les pages &quot;Accueil&quot; &amp; &quot;Nos réalisations&quot; ne sont pas responsives
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 5:05 PM </td>
+                                            <td class="lastViewed"> 22/nov./23 11:16 AM </td>
+                                            <td class="updated"> 21/nov./23 10:57 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://alphatestoc.atlassian.net/secure/attachment/10005/formulaire-footer-mobile.png">
+            formulaire-footer-mobile.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Accéder à la page d&#39;accueil du site|La page s&#39;affiche|<br/>
+|réduire la taille de l&#39;écran jusqu&#39;à la taille tablette|l&#39;affichage doit s&#39;adapter l&#39;écran<br/>
+{color:#ff5630}l&#39;affichage n&#39;est pas responsive pour la partie slider{color}|<br/>
+|réduire la taille de l&#39;écran jusqu&#39;à la taille mobile|l&#39;affichage doit s&#39;adapter l&#39;écran<br/>
+{color:#ff5630}l&#39;affichage n&#39;est pas responsive pour la partie slider, le menu,  formulaire de contacte et le footer{color}|<br/>
+|Cliquer sur l&#39;item &quot;Nos réalisations&quot; du menu ou scroller jusqu&#39;à cette section|Cette section présente les réalisations de l&#39;agence|<br/>
+|réduire la taille de l&#39;écran jusqu&#39;à la taille mobile|l&#39;affichage doit s&#39;adapter l&#39;écran<br/>
+{color:#ff5630}l&#39;affichage n&#39;est pas responsive {color}|
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 5:05 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Mineure
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0000v:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10006" rel="10006" data-issuekey="PDTL-7" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-7" href="https://alphatestoc.atlassian.net/browse/PDTL-7">PDTL-7</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-005 : Exploratoire - L&#39;image cliquable du Footer renvoie un message d&#39;erreur
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 4:43 PM </td>
+                                            <td class="lastViewed"> 21/nov./23 10:48 PM </td>
+                                            <td class="updated"> 21/nov./23 10:50 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://alphatestoc.atlassian.net/secure/attachment/10003/message+d_erreur+dernier+evenement.png">
+            message d_erreur dernier evenement.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Scroller jusqu&#39;en bas de page|Le footer est séparé en 3 et est constitué : <br/>
+* d&#39;une partie &quot;Notre dernière prestation&quot; avec une image cliquable<br/>
+* d&#39;un encart &quot;Contactez-nous&quot; avec l&#39;adresse, le numéro de téléphone, l&#39;adresse email<br/>
+* d&#39;un encart &quot;724events&quot; avec un résumé des activités de l&#39;agence|<br/>
+|Cliquer  sur limage cliquable de la partie &quot;Notre dernière prestation&quot;|les détail de cet évènement s&#39;affiche|<br/>
+<br/>
+|{color:#ff5630}+*Copie du message d&#39;erreur qui s&#39;affiche:*+ {color}<br/>
+Unexpected Application Error!<br/>
+Cannot read properties of undefined (reading &#39;map&#39;)<br/>
+TypeError: Cannot read properties of undefined (reading &#39;map&#39;)<br/>
+    at ModalEvent ([http://localhost:3000/static/js/bundle.js:2439:86|http://localhost:3000/static/js/bundle.js:2439:86])<br/>
+    at renderWithHooks ([http://localhost:3000/static/js/bundle.js:28836:22|http://localhost:3000/static/js/bundle.js:28836:22])<br/>
+    at updateFunctionComponent ([http://localhost:3000/static/js/bundle.js:31718:24|http://localhost:3000/static/js/bundle.js:31718:24])<br/>
+    at beginWork ([http://localhost:3000/static/js/bundle.js:33430:20|http://localhost:3000/static/js/bundle.js:33430:20])<br/>
+    at beginWork$1 ([http://localhost:3000/static/js/bundle.js:38381:18|http://localhost:3000/static/js/bundle.js:38381:18])<br/>
+    at performUnitOfWork ([http://localhost:3000/static/js/bundle.js:37650:16|http://localhost:3000/static/js/bundle.js:37650:16])<br/>
+    at workLoopSync ([http://localhost:3000/static/js/bundle.js:37573:9|http://localhost:3000/static/js/bundle.js:37573:9])<br/>
+    at renderRootSync ([http://localhost:3000/static/js/bundle.js:37546:11|http://localhost:3000/static/js/bundle.js:37546:11])<br/>
+    at recoverFromConcurrentError ([http://localhost:3000/static/js/bundle.js:37038:24|http://localhost:3000/static/js/bundle.js:37038:24])<br/>
+    at performConcurrentWorkOnRoot ([http://localhost:3000/static/js/bundle.js:36950:26|http://localhost:3000/static/js/bundle.js:36950:26])<br/>
+💿 Hey developer 👋<br/>
+You can provide a way better UX than this when your app throws errors by providing your own ErrorBoundary or errorElement prop on your route.|
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 4:43 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Critique
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0000n:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10005" rel="10005" data-issuekey="PDTL-6" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-6" href="https://alphatestoc.atlassian.net/browse/PDTL-6">PDTL-6</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-004 : Message d&#39;erreur indiquant le manque d&#39;informations ne s&#39;affiche pas pour la section &quot;Contact&quot;
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 4:38 PM </td>
+                                            <td class="lastViewed"> 21/nov./23 10:47 PM </td>
+                                            <td class="updated"> 21/nov./23 4:50 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Cliquer sur l&#39;item &quot;Contact&quot; du menu ou scroller jusqu&#39;à cette section|Cette section se compose d&#39;un formulaire de contact avec : <br/>
+* Nom<br/>
+* Prénom<br/>
+* Personnel / Entreprise<br/>
+* Email<br/>
+* Une zone de saisie du message de contact<br/>
+* Un bouton &quot;Envoyer&quot;|<br/>
+|Remplir seulement le champ &quot;Nom&quot; et cliquer sur le bouton &quot;Envoyer&quot;|Un message d&#39;erreur s&#39;affiche pour indiquer qu&#39;il manque des informations<br/>
+{color:#ff5630}Le message d&#39;erreur  indiquant qu&#39;il manque des informations ne s&#39;affiche pas{color}|<br/>
+|Remplir seulement le champ &quot;Prénom&quot; et cliquer sur le bouton &quot;Envoyer&quot;|Un message d&#39;erreur s&#39;affiche pour indiquer qu&#39;il manque des informations<br/>
+{color:#ff5630}Le message d&#39;erreur  indiquant qu&#39;il manque des informations ne s&#39;affiche pas{color}|<br/>
+|Remplir seulement le champ &quot;Personnel / Entreprise&quot; et cliquer sur le bouton &quot;Envoyer&quot;|Un message d&#39;erreur s&#39;affiche pour indiquer qu&#39;il manque des informations<br/>
+{color:#ff5630}Le message d&#39;erreur  indiquant qu&#39;il manque des informations ne s&#39;affiche pas{color}|<br/>
+|Remplir seulement le champ &quot;Email&quot; et cliquer sur le bouton &quot;Envoyer&quot;|Un message d&#39;erreur s&#39;affiche pour indiquer qu&#39;il manque des informations<br/>
+{color:#ff5630}Le message d&#39;erreur  indiquant qu&#39;il manque des informations ne s&#39;affiche pas{color}|<br/>
+|Cocher seulement la case d&#39;autorisation et cliquer sur le bouton &quot;Envoyer&quot;|{color:#ff5630}La case d’autorisation à cocher ne s&#39;affiche pas{color}|<br/>
+|Remplir seulement le champ &quot;Message&quot; et cliquer sur le bouton &quot;Envoyer&quot;|Un message d&#39;erreur s&#39;affiche pour indiquer qu&#39;il manque des informations<br/>
+{color:#ff5630}Le message d&#39;erreur  indiquant qu&#39;il manque des informations ne s&#39;affiche pas{color}|<br/>
+|Remplir toutes les informations et cliquer sur le bouton &quot;Envoyer&quot;|Le formulaire est envoyé et un message de succès s&#39;affiche<br/>
+{color:#ff5630}Le message de succès ne s&#39;affiche pas, et on ignore si le message est envoyé ou pas.{color}|
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 4:38 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Majeure
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0000f:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10004" rel="10004" data-issuekey="PDTL-5" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-5" href="https://alphatestoc.atlassian.net/browse/PDTL-5">PDTL-5</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-003 : La liste de choix de catégorie ne fonctionne pas pour la section &quot;Nos réalisations&quot;
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 4:28 PM </td>
+                                            <td class="lastViewed"> 21/nov./23 10:43 PM </td>
+                                            <td class="updated"> 21/nov./23 10:47 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://alphatestoc.atlassian.net/secure/attachment/10002/Nos+realisations+filtre.png">
+            Nos realisations filtre.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Cliquer sur l&#39;item &quot;Nos réalisations&quot; du menu ou scroller jusqu&#39;à cette section|Cette section présente les réalisations de l&#39;agence|<br/>
+<br/>
+|Cliquer dans la liste de choix et sélectionner une catégorie|{color:#4c9aff}Les vignettes affichées sont filtrées en fonction de la catégorie choisie{color}|<br/>
+<br/>
+{color:#ff5630}Les vignettes ne s’affiche pas en fonction de la catégorie choisie.{color}
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 4:28 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Majeure
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00007:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10003" rel="10003" data-issuekey="PDTL-4" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-4" href="https://alphatestoc.atlassian.net/browse/PDTL-4">PDTL-4</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-002 : Les images sont les mêmes pour les pages section &quot;Nos réalisations&quot;
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 4:23 PM </td>
+                                            <td class="lastViewed"> 21/nov./23 10:43 PM </td>
+                                            <td class="updated"> 21/nov./23 10:43 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://alphatestoc.atlassian.net/secure/attachment/10001/Nos+realisations+page+1.png">
+            Nos realisations page 1.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Cliquer sur l&#39;item &quot;Nos réalisations&quot; du menu ou scroller jusqu&#39;à cette section|Cette section présente les réalisations de l&#39;agence|<br/>
+|VERIFIER LE CONTENU DE LA SECTION &quot;NOS  REALISATIONS&quot;|Elle contient : une liste de choix, des vignettes correspondants aux réalisations de l&#39;agence et une pagination|<br/>
+|VERIFIER LE CONTENU DE CHAQUE VIGNETTE|Chaque vignette se compose d&#39;une image, d&#39;un titre et d&#39;une date (mois)|<br/>
+|Cliquer sur la page suivante pour accéder aux réalisations suivantes|{color:#4c9aff}Les réalisations suivantes s&#39;affichent{color}|<br/>
+<br/>
+{color:#ff5630}Les images sont les mêmes, seules quelques catégories changent.{color}
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 4:23 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Majeure
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00003:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10002" rel="10002" data-issuekey="PDTL-3" class="issuerow">
+                                            <td class="project">    projet de test logiciel
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="PDTL-3" href="https://alphatestoc.atlassian.net/browse/PDTL-3">PDTL-3</a>
+</td>
+                                            <td class="summary"><p>
+                Bug-001 : Message de succès ne s&#39;affiche pas pour le Slider - 3ème image.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;À faire&lt;/span&gt;">À faire</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Non résolu</em>
+</td>
+                                            <td class="assignee">            Alpha
+    </td>
+                                            <td class="reporter">            Alpha
+    </td>
+                                            <td class="creator">            Alpha
+    </td>
+                                            <td class="created"> 21/nov./23 4:06 PM </td>
+                                            <td class="lastViewed"> 21/nov./23 10:39 PM </td>
+                                            <td class="updated"> 21/nov./23 4:49 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      |Revenir à la page d&#39;accueil en cliquant sur le logo &quot;724events&quot; en haut à gauche|La page d&#39;accueil s&#39;affiche|<br/>
+<br/>
+|Cliquer sur l&#39;image &quot;World economic forum&quot; du slider|Une nouvelle page s&#39;ouvre avec l&#39;événement|<br/>
+<br/>
+|Vérifier que le titre est &quot;World economic forum&quot;|Le titre est correct|<br/>
+|Vérifiier que les dates sont &quot;24-25-26 avril&quot;|Les dates sont correctes|<br/>
+|Vérifier que la description est &quot;Œuvre à la coopération entre le secteur public et le privé.&quot;|La description est correcte|<br/>
+|Vérifier qu&#39;il y a une map Google|La map Google est présente|<br/>
+|Vérifier que le nombre de participants est 1200|Le nombre de participants est 1200|<br/>
+|Vérifier que les prestations proposées sont : <br/>
+* 1 espace d’exposition<br/>
+* 1 scéne principale<br/>
+* 2 espaces de restaurations<br/>
+* 1 site Web dédié|Les prestations proposées sont correctes|<br/>
+|Vérifier qu&#39;un formulaire de réservation est présent et qu&#39;il contient :<br/>
+* Nom<br/>
+* Prénom<br/>
+* Date<br/>
+* Email<br/>
+* Un bouton &quot;Envoyer&quot;|Les informations du formulaire sont correctes|<br/>
+|Remplir le formulaire de réservation et cliquer sur le bouton &quot;Envoyer&quot;|{color:#4c9aff}Le formulaire de réservation est envoyé et un message de succès s&#39;affiche{color}|<br/>
+<br/>
+|{color:#ff5630}le message de succès n&#39;est pas affiché et sans possibilité de vérifier si le message est envoyé ou pas.{color}|
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 21/nov./23 4:07 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">A faire</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10032">    Majeure
+</td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|hzzzzz:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020">Tableau Sprint 1</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Aucun(e)
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+        </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="70"><font size="1">
+        Généré à Wed Nov 22 10:37:07 UTC 2023 par Alpha avec JIRA 1001.0.0-SNAPSHOT#100242-sha1:289175e7280e93353ba45a11daff0b94e1de47d7.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
